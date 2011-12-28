@@ -1,5 +1,5 @@
 (ns wareop.middleware.redis-datamapper
-  (:require redis)
+  (:require [redis.core :as redis])
   (:use clojure.contrib.str-utils)
   (:use wareop.middleware.redis-persistence))
 

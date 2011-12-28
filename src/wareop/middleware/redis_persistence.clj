@@ -1,5 +1,5 @@
 (ns wareop.middleware.redis-persistence
-  (:require redis)
+  (:require [redis.core :as redis])
   (:require (org.danlarkin [json :as json])))
 
 ;; serialization
