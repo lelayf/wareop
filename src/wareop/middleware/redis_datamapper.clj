@@ -1,13 +1,13 @@
 (ns wareop.middleware.redis-datamapper
   (:require [redis.core :as redis])
-  (:use clojure.contrib.str-utils)
+  (:use [clojure.contrib.str-utils :as cstr])
   (:use wareop.middleware.redis-persistence))
 
 (defn primary-key-value [redis-obj]
   (let [pk-keys ((redis-obj :type) :primary-key)
 	separator ((redis-obj :type) :key-separator)
 	values (map #(redis-obj :get %) pk-keys)]
-    (str-join separator values)))
+    (cstr/str-join separator values)))
 
 (defn new-redis-object [redis-type]
   (let [state (ref {})]
@@ -80,11 +80,11 @@
                         (nh :replace-state new-state)
                         nh)
       :find (find-by-primary-key redis-type args)
-      :exists? (let [key-value (str-join separator args)
+      :exists? (let [key-value (cstr/str-join separator args)
                      key-value (str key-value separator (first primary-keys))]
                  (redis/exists key-value))
       :attrib-exists? (let [attrib-key (first args)
-                            pk-value (str-join separator (rest args))]
+                            pk-value (cstr/str-join separator (rest args))]
                         (redis/exists (str pk-value separator attrib-key))))))
 
 (defn specs-for [redis-datatype specs]
@@ -100,3 +100,4 @@
 	separator (or (first (specs-for 'key-separator specs)) "___")]
     `(def ~name 
 	  (new-redis-type '~name ~separator ~format '~pk-keys '~string-types '~list-types))))
+

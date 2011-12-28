@@ -1,4 +1,4 @@
-(ns newseasons.templates.main
+(ns wareop.templates.main
   (:require [noir.session :as sess])
   (:use noir.core
         hiccup.core
@@ -180,3 +180,4 @@
           [:p "If you're sure about this you can delete your account here."]
           (form-to [:post ""]
                    (submit-button "Delete Account"))]))
+

@@ -1,16 +1,16 @@
 (ns wareop.middleware.redis-persistence
   (:require [redis.core :as redis])
-  (:require (org.danlarkin [json :as json])))
+  (:use [cheshire.core :only [generate-string parse-string]]))
 
 ;; serialization
 (defmulti serialize (fn [format key-type value]
 		      [format key-type]))
 
 (defmethod serialize [:json :string-type] [format key-type value]
-  (json/encode-to-str value))
+  (generate-string value))
 
 (defmethod serialize [:json :list-type] [format key-type value]
-  (map json/encode-to-str value))
+  (map generate-string value))
 
 (defmethod serialize [:clj-str :string-type] [format key-type value]
   (pr-str value))
@@ -24,10 +24,10 @@
 			[format key-type]))
 
 (defmethod deserialize [:json :string-type] [format key-type serialized]
-  (json/decode-from-str serialized))
+  (parse-string serialized))
 
 (defmethod deserialize [:json :list-type] [format key-type serialized]
-  (map json/decode-from-str serialized))
+  (map parse-string serialized))
 
 (defmethod deserialize [:clj-str :string-type] [format key-type serialized]
   (read-string serialized))
@@ -91,3 +91,4 @@
     (if (empty? deserialized)
       nil
       (redis-type :new-with-state deserialized))))
+

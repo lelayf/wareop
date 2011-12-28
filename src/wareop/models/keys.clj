@@ -7,7 +7,7 @@
   (str "users:" email))
 
 (defn key-connection [id]
-  (str "connections:" id)
+  (str "connections:" id))
 
 (defn key-datasource-connections [id]
   (str "datasources:" id ":connections"))

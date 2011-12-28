@@ -11,3 +11,4 @@
                  [aleph "0.2.0-beta2"]]
   :dev-dependencies [[lein-marginalia "0.6.0"]]
   :main wareop.server)
+
