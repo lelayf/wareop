@@ -1,16 +1,19 @@
 (ns wareop.views.main
   (:use noir.core)
   (:use wareop.utils)
+  (:use wareop.settings)
   (:require [noir.response :as resp])
   (:require [noir.session :as sess])
   (:require [noir.util.crypt :as crypt])
   (:require [wareop.templates.main :as t])
-  (:require [wareop.models.datasources :as ds])i
-  (:require [wareop.models.users :as users])i)
+  (:require [wareop.models.connections :as cn])i
+  (:require [wareop.models.users :as u])i)
 
 
 ; Utils -----------------------------------------------------------------------
+
 (def email-regex #"[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}")
+
 (defn all-are [pred coll]
   (= (count coll)
     (count (filter pred coll))))
@@ -19,33 +22,8 @@
   (sess/flash-put! message)
   nil)
 
-
-; Utils -----------------------------------------------------------------------
-(defn unique-by
-  "Turn a sequence of maps into a new sequence with duplicated removed, with
-  uniqueness determined by the given keys.
-
-  Ex:
-
-  (def a {:foo 1 :bar 1 :baz 1})
-  (def b {:foo 1 :bar 1 :baz 2})
-  (def c {:foo 1 :bar 2 :baz 3})
-
-  (unique-by [a b c] :foo)
-  ;=> [c]
-  (unique-by [a b c] :foo :bar)
-  ;=> [b c]
-  (unique-by [a b c] :baz)
-  ;=> [a b c]
-  "
-  [coll & ks]
-  (vals (reduce merge {} (map #(vector (select-keys % ks) %) coll))))
-
-(defn unique-shows [seasons]
-  (unique-by (sort-maps-by seasons "releaseDate") "artistId"))
-
-
 ; Authentication --------------------------------------------------------------
+
 (defn force-login []
   (flash! "Please log in to view that page!")
   (resp/redirect "/"))
@@ -55,19 +33,19 @@
      (force-login)
      (do ~@body)))
 
-
 (defn create-user [email password]
-  (users/user-set-email! email email)
-  (users/user-set-pass! email password)
-  (sess/put! :email email)
-  (users/user-get email))
+  (let [uzr (u/user :new)]
+    (uzr :set! :email email)
+    (uzr :set! :pass (crypt/encrypt password))
+    (sess/put! :email email)
+    (uzr :get :email)))
 
 (defn check-login [{:keys [email password]}]
   (if (some empty? [email password])
     (flash! "Both fields are required.  This really shouldn't be difficult.")
     (if-not (re-find email-regex email)
       (flash! "That's not an email address!")
-      (if-let [user (users/user-get email)]
+      (if-let [user (redis/with-server redis-conf (def d (u/user :find :email email)))]
         (if (crypt/compare password (:pass user))
           (do
             (sess/put! :email email)

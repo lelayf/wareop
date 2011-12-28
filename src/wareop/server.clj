@@ -10,6 +10,5 @@
   (let [mode (keyword (or (first m) :dev))
         port (Integer. (get (System/getenv) "PORT" "8000"))]
     (server/start port {:mode mode
-                        :ns 'wareop
-                        :session-store (redis-store "localhost" redis-pass)})))
+                        :ns 'wareop})))
 

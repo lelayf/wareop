@@ -6,9 +6,7 @@
                  [noir "1.2.0"]
                  [org.clojars.tavisrudd/redis-clojure "1.3.1-SNAPSHOT"] 
                  [postmark "1.0.0"]
-                 [cheshire "2.0.2"]
-                 [clj-http "0.2.1"]
-                 [aleph "0.2.0-beta2"]]
+                 [cheshire "2.0.2"]]
   :dev-dependencies [[lein-marginalia "0.6.0"]]
   :main wareop.server)
 
