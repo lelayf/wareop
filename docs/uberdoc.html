@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8" content="text/html" http-equiv="Content-Type" /><meta content="Plug and play operational datawarehouse" name="description" /><style type="text/css">/**
+<html><head><meta charset="utf-8" content="text/html" http-equiv="Content-Type" /><meta content="Next best action, next best analytics" name="description" /><style type="text/css">/**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
  *
@@ -2526,12 +2526,12 @@ $(document).ready(function() {
     ul.css('margin-top', '0px')
 
 })
-</script><title>wareop -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">wareop</h1><h2 class="project-version">1.0.0-SNAPSHOT</h2><br /><p>Plug and play operational datawarehouse</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">org.clojure/clojure-contrib</td><td class="dotted"><hr /></td><td class="dep-version">1.2.0</td></tr><tr><td class="dep-name">org.clojure/java.jdbc</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">noir</td><td class="dotted"><hr /></td><td class="dep-version">1.2.0</td></tr><tr><td class="dep-name">org.clojars.tavisrudd/redis-clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.1-SNAPSHOT</td></tr><tr><td class="dep-name">postmark</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">cheshire</td><td class="dotted"><hr /></td><td class="dep-version">2.0.2</td></tr><tr><td class="dep-name">clj-http</td><td class="dotted"><hr /></td><td class="dep-version">0.2.1</td></tr><tr><td class="dep-name">aleph</td><td class="dotted"><hr /></td><td class="dep-version">0.2.0-beta2</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table><tr><td class="dep-name">lein-marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.6.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#wareop.middleware.redis-datamapper">wareop.middleware.redis-datamapper</a></li><li><a href="#wareop.middleware.redis-persistence">wareop.middleware.redis-persistence</a></li><li><a href="#wareop.middleware.session.redis">wareop.middleware.session.redis</a></li><li><a href="#wareop.models.connections">wareop.models.connections</a></li><li><a href="#wareop.models.datasources">wareop.models.datasources</a></li><li><a href="#wareop.models.keys">wareop.models.keys</a></li><li><a href="#wareop.models.users">wareop.models.users</a></li><li><a href="#wareop.server">wareop.server</a></li><li><a href="#wareop.settings">wareop.settings</a></li><li><a href="#wareop.templates.main">wareop.templates.main</a></li><li><a href="#wareop.utils">wareop.utils</a></li><li><a href="#wareop.views.main">wareop.views.main</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.middleware.redis-datamapper" name="wareop.middleware.redis-datamapper"><h1 class="project-name">wareop.middleware.redis-datamapper</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.middleware.redis-datamapper
+</script><title>wareop -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">wareop</h1><h2 class="project-version">1.0.0-SNAPSHOT</h2><br /><p>Next best action, next best analytics</p>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">org.clojure/clojure-contrib</td><td class="dotted"><hr /></td><td class="dep-version">1.2.0</td></tr><tr><td class="dep-name">org.clojure/java.jdbc</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">noir</td><td class="dotted"><hr /></td><td class="dep-version">1.2.2</td></tr><tr><td class="dep-name">org.clojars.tavisrudd/redis-clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.1-SNAPSHOT</td></tr><tr><td class="dep-name">cheshire</td><td class="dotted"><hr /></td><td class="dep-version">2.0.2</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table><tr><td class="dep-name">lein-marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.6.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#wareop.database.redis-datamapper">wareop.database.redis-datamapper</a></li><li><a href="#wareop.database.redis-persistence">wareop.database.redis-persistence</a></li><li><a href="#wareop.models.connections">wareop.models.connections</a></li><li><a href="#wareop.models.users">wareop.models.users</a></li><li><a href="#wareop.models">wareop.models</a></li><li><a href="#wareop.server">wareop.server</a></li><li><a href="#wareop.views.app">wareop.views.app</a></li><li><a href="#wareop.views.common">wareop.views.common</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.database.redis-datamapper" name="wareop.database.redis-datamapper"><h1 class="project-name">wareop.database.redis-datamapper</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(ns wareop.database.redis-datamapper
   (:require [redis.core :as redis])
   (:use [clojure.contrib.str-utils :as cstr])
-  (:use wareop.middleware.redis-persistence))</pre></tr><tr><td class="docs">
+  (:use wareop.database.redis-persistence))</pre></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(defn primary-key-value [redis-obj]
   (let [pk-keys ((redis-obj :type) :primary-key)
 	separator ((redis-obj :type) :key-separator)
@@ -2621,8 +2621,8 @@ $(document).ready(function() {
 	format (or (first (specs-for 'format specs)) :clj-str)
 	separator (or (first (specs-for 'key-separator specs)) &quot;___&quot;)]
     `(def ~name 
-	  (new-redis-type '~name ~separator ~format '~pk-keys '~string-types '~list-types))))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.middleware.redis-persistence" name="wareop.middleware.redis-persistence"><h1 class="project-name">wareop.middleware.redis-persistence</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.middleware.redis-persistence
+	  (new-redis-type '~name ~separator ~format '~pk-keys '~string-types '~list-types))))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.database.redis-persistence" name="wareop.database.redis-persistence"><h1 class="project-name">wareop.database.redis-persistence</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(ns wareop.database.redis-persistence
   (:require [redis.core :as redis])
   (:use [cheshire.core :only [generate-string parse-string]]))</pre></tr><tr><td class="docs"><p>serialization</p>
 </td><td class="codes" /><pre class="brush: clojure">(defmulti serialize (fn [format key-type value]
@@ -2694,426 +2694,101 @@ $(document).ready(function() {
 	deserialized (deserialize-state serialized redis-type)]
     (if (empty? deserialized)
       nil
-      (redis-type :new-with-state deserialized))))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.middleware.session.redis" name="wareop.middleware.session.redis"><h1 class="project-name">wareop.middleware.session.redis</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Redis session storage.</p>
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.middleware.session.redis
-  (:use ring.middleware.session.store)
-  (:use [cheshire.core :only (generate-string parse-string)])
-  (:use [aleph.redis :only (redis-client)])
-  (:import java.util.UUID))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(deftype RedisStore [r]
-  SessionStore
-  (read-session [_ key]
-    (parse-string (or @(r [:get key]) &quot;{}&quot;)))
-  (write-session [_ key data]
-    (let [key (or key (str (UUID/randomUUID)))]
-      @(r [:set key (generate-string data)])
-      (r [:expire key (* 60 60 24 30)])
-      key))
-  (delete-session [_ key]
-    @(r [:del key])
-    nil))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn redis-store
-  &quot;Creates a Redis-backed storage engine.&quot;
-  [host password] (RedisStore. (redis-client {:host host :password password})))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models.connections" name="wareop.models.connections"><h1 class="project-name">wareop.models.connections</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+      (redis-type :new-with-state deserialized))))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models.connections" name="wareop.models.connections"><h1 class="project-name">wareop.models.connections</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(ns wareop.models.connections
-  (:use wareop.settings)
-  (:use wareop.middleware.redis-datamapper))</pre></tr><tr><td class="docs"><p>subprotocol:<subprotocol value>:connections = (&lt;Connection ID>, ...) (Set)
-context:<context value>:connections = (&lt;Connection ID>, ...) (Set)</p>
-</td><td class="codes" /></tr><tr><td class="docs">
+  (:use wareop.database.redis-datamapper))</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defn init! [] (println &quot;Initialized connections model&quot;))</pre></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(def-redis-type connection (string-type :id :name :classname :subprotocol :port :sid :ip :user :pass :db :context) 
-                           (primary-key :id))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models.datasources" name="wareop.models.datasources"><h1 class="project-name">wareop.models.datasources</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.models.datasources
-  (:use wareop.settings)
-  (:use wareop.models.keys)
-  (:use wareop.utils)
-  (:require [noir.util.crypt :as crypt])
-  (:use [aleph.redis :only (redis-client)]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def r (redis-client {:host &quot;localhost&quot; :password redis-pass}))</pre></tr><tr><td class="docs"><p>Datasources are stored as Redis hashes</p>
-
-<p>datasource:<id> = {
-id:
-name: 
-connections: #{prod: connection-id, ...}
-}</p>
-
-<p>connection:<id>:datasources = #{datasource-id, ...}</p>
-</td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn datasource-get [id]
-  (let [ds (apply hash-map @(r [:hgetall (key-datasource id)]))]
-    (when (not (empty? ds))
-      (merge {:email (user &quot;email&quot;) :pass (user &quot;pass&quot;)}
-             {:connections (sort-maps-by (map show-get
-                                        @(r [:smembers (key-user-shows email)]))
-                                   :title)}))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-set-email! [email new-email]
-  @(r [:hset (key-user email) &quot;email&quot; new-email]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-set-pass! [email new-pass]
-  @(r [:hset (key-user email) &quot;pass&quot; (crypt/encrypt new-pass)]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-add-show! [email show-id]
-  @(r [:sadd (key-user-shows email) show-id])
-  @(r [:sadd (key-show-watchers show-id) email]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-rem-show! [email show-id]
-  @(r [:srem (key-user-shows email) show-id])
-  @(r [:srem (key-show-watchers show-id) email]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-delete! [email]
-  @(r [:del (key-user email)])
-  @(r [:del (key-user-shows email)])
-  (let [shows @(r [:smembers &quot;shows:to-check&quot;])]
-    (dorun (map (fn [show-id]
-                  @(r [:srem (key-show-watchers show-id) email]))
-                shows))))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models.keys" name="wareop.models.keys"><h1 class="project-name">wareop.models.keys</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.models.keys)</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn key-datasource [id]
-  (str &quot;datasources:&quot; id))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn key-user [email]
-  (str &quot;users:&quot; email))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn key-connection [id]
-  (str &quot;connections:&quot; id))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn key-datasource-connections [id]
-  (str &quot;datasources:&quot; id &quot;:connections&quot;))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn key-connection-datasources [id]
-  (str &quot;connections:&quot; id &quot;:datasources&quot;))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models.users" name="wareop.models.users"><h1 class="project-name">wareop.models.users</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+                           (list-type :read-by :write-by :del-by)
+                           (primary-key :id))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models.users" name="wareop.models.users"><h1 class="project-name">wareop.models.users</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(ns wareop.models.users
-  (:use wareop.settings)
-  (:use wareop.models.keys)
-  (:use wareop.utils)
-  (:use [wareop.models.shows :only (show-get)])
-  (:require [noir.util.crypt :as crypt])
-  (:use [aleph.redis :only (redis-client)]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def r (redis-client {:host &quot;localhost&quot; :password redis-pass}))</pre></tr><tr><td class="docs"><p>Users are stored as Redis hashes, with their watched shows as a separate set.</p>
-
-<p>user:<email address> = {
-email: the email address for ease of use
-pass: the user's hashed password
-}
-user:<email address>:shows = #{show-id, ...}</p>
-
-<p>The show watching data is also denormalized based on show.</p>
-
-<p>shows:<id>:watchers - #{email, ...}</p>
+    (:require [redis.core :as redis])
+    (:require [noir.util.crypt :as crypt])
+    (:use wareop.database.redis-datamapper))</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defn init! [] (println &quot;Initialized user model&quot;))</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(def-redis-type user (string-type :email :pass)
+                     (list-type :read :write :del)
+                     (primary-key :email))</pre></tr><tr><td class="docs"><p>Getters</p>
 </td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-get [email]
-  (let [user (apply hash-map @(r [:hgetall (key-user email)]))]
-    (when (not (empty? user))
-      (merge {:email (user &quot;email&quot;) :pass (user &quot;pass&quot;)}
-             {:shows (sort-maps-by (map show-get
-                                        @(r [:smembers (key-user-shows email)]))
-                                   :title)}))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-set-email! [email new-email]
-  @(r [:hset (key-user email) &quot;email&quot; new-email]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-set-pass! [email new-pass]
-  @(r [:hset (key-user email) &quot;pass&quot; (crypt/encrypt new-pass)]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(comment
-(defn user-add-show! [email show-id]
-  @(r [:sadd (key-user-shows email) show-id])
-  @(r [:sadd (key-show-watchers show-id) email]))
-(defn user-rem-show! [email show-id]
-  @(r [:srem (key-user-shows email) show-id])
-  @(r [:srem (key-show-watchers show-id) email])))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn user-delete! [email]
-  @(r [:del (key-user email)])
-  @(r [:del (key-user-data email)]))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.server" name="wareop.server"><h1 class="project-name">wareop.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defn user-get [email] (redis/with-server (def d (user :find :email email))))</pre></tr><tr><td class="docs"><p>Mutations and Checkers</p>
+</td><td class="codes" /></tr><tr><td class="docs"><p>Operations</p>
+</td><td class="codes" /></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.models" name="wareop.models"><h1 class="project-name">wareop.models</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(ns wareop.models
+    (:require [wareop.models.users :as users]
+              [wareop.models.connections :as connections]))</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defn initialize []
+  &quot;Placeholder to perform various init things.&quot;
+  (do    
+      (users/init!)            
+      (connections/init!)))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.server" name="wareop.server"><h1 class="project-name">wareop.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(ns wareop.server
-  (:use wareop.settings)
-  (:use [wareop.middleware.session.redis :only (redis-store)])
-  (:require [noir.server :as server]))</pre></tr><tr><td class="docs">
+  (:require [noir.server :as server]
+            [wareop.models :as models]))</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(println &quot;Loading Views&quot;)</pre></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(server/load-views &quot;src/wareop/views/&quot;)</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(println &quot;Starting server&quot;)</pre></tr><tr><td class="docs">
 </td><td class="codes" /><pre class="brush: clojure">(defn -main [&amp; m]
- &quot;Noir server loop with plugged-in redis session store&quot; 
+ &quot;Noir server loop with default Ring session store&quot; 
   (let [mode (keyword (or (first m) :dev))
         port (Integer. (get (System/getenv) &quot;PORT&quot; &quot;8000&quot;))]
+    (models/initialize)
     (server/start port {:mode mode
-                        :ns 'wareop
-                        :session-store (redis-store &quot;localhost&quot; redis-pass)})))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.settings" name="wareop.settings"><h1 class="project-name">wareop.settings</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.settings)</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def redis-pass )
-(def postmark-api-key &quot;POSTMARK_API_TEST&quot;)</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.templates.main" name="wareop.templates.main"><h1 class="project-name">wareop.templates.main</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.templates.main
-  (:require [noir.session :as sess])
+                        :ns 'wareop})))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.views.app" name="wareop.views.app"><h1 class="project-name">wareop.views.app</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(ns wareop.views.app
   (:use noir.core
         hiccup.core
         hiccup.page-helpers
-        hiccup.form-helpers))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def ga &quot;
-  &lt;script type=\&quot;text/javascript\&quot;&gt;
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-15328874-7']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-  &lt;/script&gt;&quot;)</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def gauges &quot;
-  &lt;script type='text/javascript'&gt;
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '4ea612e7613f5d4208000001');
-        t.src = '//secure.gaug.es/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
-  &lt;/script&gt;&quot;)</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn include-less [href]
-  [:link {:rel &quot;stylesheet/less&quot; :type &quot;text/css&quot; :href href}])</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn field [fieldfn field-name label]
-  (list [:label {:for (str &quot;id_&quot; field-name)} label]
-    (fieldfn field-name)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn pluralize
-  ([coll] (pluralize coll &quot;s&quot;))
-  ([coll plural-suffix] (if (= 1 (count coll))
-                          plural-suffix)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial base [body-class &amp; content]
-  (html5
-    [:head
-     (map include-css [&quot;/css/base.css&quot;
-                       &quot;/css/skeleton.css&quot;
-                       &quot;/css/layout.css&quot;])
-     (include-less &quot;/css/style.less&quot;)
-     (include-js &quot;/js/less.js&quot;)
-     [:title &quot;New Seasons&quot;]]
-    [:body {:class body-class}
-     [:div.container.clearfix
-      [:header.sixteen.columns [:h1 (link-to &quot;/&quot; &quot;New Seasons&quot;)]]
-      (when-let [message (sess/flash-get)]
-        [:section.message.sixteen.columns
-         [:p message]])
-      content
-      [:footer.sixteen.columns
-       [:p
-        &quot;Made by &quot;
-        (link-to &quot;http://stevelosh.com/&quot; &quot;Steve Losh&quot;)
-        &quot; with &quot;
-        (link-to &quot;http://webnoir.org/&quot; &quot;Noir&quot;)
-        &quot;. &quot;
-        &quot;It&amp;apos;s &quot;
-        (link-to &quot;http://github.com/sjl/newseasons&quot; &quot;open source&quot;)
-        &quot;.&quot;]]]
-     ga
-     gauges]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial inner [title body-class &amp; content]
-  (base body-class
-        [:h2.sixteen.columns.page-title
-         [:div.profile
-          (form-to [:post &quot;/logout&quot;]
-                   (submit-button &quot;Log Out&quot;))
-          (form-to [:get &quot;/password&quot;]
-                   (submit-button &quot;Change Password&quot;))]
-         title]
-        content
-        (when-not (= body-class &quot;user&quot;)
-          [:p.sixteen.columns (link-to &quot;/&quot; &quot;&amp;larr; Back to Dashboard&quot;)]) 
-        [:p.delete.sixteen.columns
-         &quot;Don't want to receive any more notifications? &quot;
-         &quot;You can &quot;
-         (link-to &quot;/delete-account&quot; &quot;delete your account&quot;)
-         &quot;.&quot;]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial home []
-  (base &quot;home&quot;
-        [:div.six.columns
-         (form-to [:post ]
-                  (field text-field &quot;email&quot; &quot;Email Address&quot;)
-                  (field password-field &quot;password&quot; &quot;Password&quot;)
-                  (submit-button &quot;Log In or Create Account&quot;))]
-        [:div.five.columns
-         [:p &quot;New Seasons will notify you when your favorite TV &quot;
-          &quot;shows have new seasons on iTunes.&quot;]]
-        [:div.five.columns
-         [:p &quot;Add some shows to your list, we'll email you when new seasons come out.  That's it.&quot;]]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial user-show [show]
-  [:li.show.group
-   (form-to [:post &quot;/rem&quot;]
-            [:input {:type &quot;hidden&quot; :name &quot;artist-id&quot; :value (show :id)}]
-            (submit-button &quot;Remove&quot;))
-   [:img {:src (show :image)}]
-   [:h3 (link-to (show :url) (show :title))]
-   [:p.latest &quot;Latest: &quot; (show :latest)]])</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial user [user]
-  (inner (str &quot;Hello, &quot; (:email user)) &quot;user&quot;
-         [:div.seven.columns
-          (form-to [:get &quot;search&quot;]
-                   (field text-field
-                          &quot;query&quot;
-                          &quot;Which show do you want to keep track of?&quot;)
-                   (submit-button &quot;Search&quot;))]
-         [:div.nine.columns
-          (let [shows (:shows user)]
-            (if (empty? shows)
-              [:p &quot;You're not currently watching any shows.&quot;]
-              (list
-                [:p
-                 &quot;You're watching &quot;
-                 (count shows)
-                 &quot; show&quot;
-                 (pluralize shows)
-                 &quot;.&quot;]
-                [:ul.shows (map user-show shows)])))]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial result [r]
-  [:li.show.group
-   [:img {:src (r &quot;artworkUrl100&quot;)}]
-   [:h3 (link-to (r &quot;artistViewUrl&quot;) (r &quot;artistName&quot;))]
-   [:p.latest &quot;Latest: &quot; (r &quot;collectionName&quot;)]
-   (form-to [:post &quot;/add&quot;]
-            [:input {:type &quot;hidden&quot; :name &quot;artist-id&quot; :value (r &quot;artistId&quot;)}]
-            (submit-button &quot;Add Show to List&quot;))])</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial search [query results]
-  (inner (str (if (empty? results)
-                &quot;No&quot;
-                (count results))
-           &quot; Result&quot; (pluralize results)
-           &quot; for &amp;ldquo;&quot; query &quot;&amp;rdquo;&quot;)
-    &quot;search&quot;
-    [:ul.sixteen.columns.search-results
-     (map result results)]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial password []
-  (inner &quot;Change Your Password&quot; &quot;change-password&quot;
-         [:section.sixteen.columns
-          (form-to [:post ]
-                   (field password-field &quot;password&quot; &quot;New Password&quot;)
-                   (submit-button &quot;Change Password&quot;))]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpartial delete-account []
-  (inner &quot;Delete Your Account&quot; &quot;delete-account&quot;
-         [:section.sixteen.columns
-          [:p &quot;If you're sure about this you can delete your account here.&quot;]
-          (form-to [:post ]
-                   (submit-button &quot;Delete Account&quot;))]))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.utils" name="wareop.utils"><h1 class="project-name">wareop.utils</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.utils
-    (:require [clojure.java.jdbc :as sql]))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def db { :classname    &quot;oracle.jdbc.driver.OracleDriver&quot;
-          :subprotocol  &quot;oracle:thin&quot;
-          :subname      &quot;@10.10.7.1:1521:DW2&quot;
-          :user         &quot;DTM_PROD&quot;
-          :password     &quot;DTM_PROD&quot; })</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn fetch-data [s]
-    (sql/with-connection db 
-           (sql/with-query-results rs s
-                   (into [] rs)))) </pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def s0 [&quot;select * from tf_order_items where date_key &gt; 20111206 and rownum&lt;=10000 order by order_id asc&quot;])</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def orderitems (vec (fetch-data s0)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn sort-maps-by [coll k]
-  (sort #(compare (%1 k) (%2 k)) coll))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.views.main" name="wareop.views.main"><h1 class="project-name">wareop.views.main</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(ns wareop.views.main
-  (:use noir.core)
-  (:use wareop.utils)
-  (:require [noir.response :as resp])
-  (:require [noir.session :as sess])
-  (:require [noir.util.crypt :as crypt])
-  (:require [wareop.templates.main :as t])
-  (:require [wareop.models.datasources :as ds])i
-  (:require [wareop.models.users :as users])i)</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(def email-regex #&quot;[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}&quot;)
-(defn all-are [pred coll]
-  (= (count coll)
-    (count (filter pred coll))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn flash! [message]
-  (sess/flash-put! message)
-  nil)</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn unique-by
-  &quot;Turn a sequence of maps into a new sequence with duplicated removed, with
-  uniqueness determined by the given keys.
-  Ex:
-  (def a {:foo 1 :bar 1 :baz 1})
-  (def b {:foo 1 :bar 1 :baz 2})
-  (def c {:foo 1 :bar 2 :baz 3})
-  (unique-by [a b c] :foo)
-  ;=&gt; [c]
-  (unique-by [a b c] :foo :bar)
-  ;=&gt; [b c]
-  (unique-by [a b c] :baz)
-  ;=&gt; [a b c]
-  &quot;
-  [coll &amp; ks]
-  (vals (reduce merge {} (map #(vector (select-keys % ks) %) coll))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn unique-shows [seasons]
-  (unique-by (sort-maps-by seasons &quot;releaseDate&quot;) &quot;artistId&quot;))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn force-login []
-  (flash! &quot;Please log in to view that page!&quot;)
-  (resp/redirect &quot;/&quot;))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defmacro login-required [&amp; body]
-  `(if-not (sess/get :email)
-     (force-login)
-     (do ~@body)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn create-user [email password]
-  (users/user-set-email! email email)
-  (users/user-set-pass! email password)
-  (sess/put! :email email)
-  (users/user-get email))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn check-login [{:keys [email password]}]
-  (if (some empty? [email password])
-    (flash! &quot;Both fields are required.  This really shouldn't be difficult.&quot;)
-    (if-not (re-find email-regex email)
-      (flash! &quot;That's not an email address!&quot;)
-      (if-let [user (users/user-get email)]
-        (if (crypt/compare password (:pass user))
-          (do
-            (sess/put! :email email)
-            user)
-          (flash! &quot;Invalid login!&quot;))
-        (create-user email password)))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage &quot;/&quot; []
-  (if-let [email (sess/get :email)]
-    (resp/redirect (str &quot;/&quot; email))
-    (t/home)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:post &quot;/&quot;] {:as login}
-  (if (check-login login)
-    (resp/redirect (str &quot;/&quot; (:email login)))
-    (render &quot;/&quot; login)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:get [&quot;/:email&quot; :email email-regex]] {:keys [email]}
-  (login-required
-    (if (not= email (sess/get :email))
-      (force-login)
-      (let [user (users/user-get email)]
-        (t/user user)))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage &quot;/search&quot; {:keys [query]}
-  (login-required
-    (if (empty? query)
-      (do (flash! &quot;Please enter something to search for.&quot;)
-        (resp/redirect &quot;/&quot;)) 
-      (let [results (unique-shows (itunes-search-show query))]
-        (shows/store-raw-shows results)
-        (t/search query results)))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:post &quot;/add&quot;] {:keys [artist-id]}
-  (login-required
-    (users/user-add-show! (sess/get :email) artist-id)
-    (shows/show-add-to-check! artist-id) 
-    (let [show (shows/show-get artist-id)]
-    (shows/show-set-version-maybe! artist-id
-      (:release-date show)) 
-    (flash! (str &quot;Added &amp;ldquo;&quot; (:title show) &quot;&amp;rdquo; to your list.  &quot;
-                 &quot;We'll email you if a new season hits iTunes.&quot;))) 
-    (resp/redirect &quot;/&quot;)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:post &quot;/rem&quot;] {:keys [artist-id]}
-  (login-required
-    (users/user-rem-show! (sess/get :email) artist-id)
-    (flash! &quot;Removed a show from your list.&quot;)
-    (resp/redirect &quot;/&quot;)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage &quot;/password&quot; []
-  (login-required
-    (t/password)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defn- pass-valid? [password]
-  (not (empty? password)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:post &quot;/password&quot;] {:keys [password]}
-  (login-required
-    (if-not (pass-valid? password)
-      (render &quot;/password&quot; password)
-      (do
-        (users/user-set-pass! (sess/get :email) password)
-        (resp/redirect &quot;/&quot;)))))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:post &quot;/logout&quot;] []
-  (sess/remove! :email)
-  (resp/redirect &quot;/&quot;))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage &quot;/delete-account&quot; []
-  (login-required
-    (t/delete-account)))</pre></tr><tr><td class="docs">
-</td><td class="codes" /><pre class="brush: clojure">(defpage [:post &quot;/delete-account&quot;] []
-  (login-required
-    (users/user-delete! (sess/get :email))
-    (sess/remove! :email)
-    (flash! &quot;Your account has been deleted.  You can sign up again later if you want, though!&quot;)
-    (resp/redirect &quot;/&quot;)))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_wareop.middleware.redis-datamapper">wareop.middleware.redis-datamapper</li><li class="floating-toc-li" id="floating-toc_wareop.middleware.redis-persistence">wareop.middleware.redis-persistence</li><li class="floating-toc-li" id="floating-toc_wareop.middleware.session.redis">wareop.middleware.session.redis</li><li class="floating-toc-li" id="floating-toc_wareop.models.connections">wareop.models.connections</li><li class="floating-toc-li" id="floating-toc_wareop.models.datasources">wareop.models.datasources</li><li class="floating-toc-li" id="floating-toc_wareop.models.keys">wareop.models.keys</li><li class="floating-toc-li" id="floating-toc_wareop.models.users">wareop.models.users</li><li class="floating-toc-li" id="floating-toc_wareop.server">wareop.server</li><li class="floating-toc-li" id="floating-toc_wareop.settings">wareop.settings</li><li class="floating-toc-li" id="floating-toc_wareop.templates.main">wareop.templates.main</li><li class="floating-toc-li" id="floating-toc_wareop.utils">wareop.utils</li><li class="floating-toc-li" id="floating-toc_wareop.views.main">wareop.views.main</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+        hiccup.form-helpers)
+  (:require [noir.session :as session]
+            [noir.validation :as vali]
+            [noir.response :as resp]
+            [clojure.string :as string]
+            [wareop.models.connections :as connections]
+            [wareop.models.users :as users]
+            [wareop.views.common :as common]))</pre></tr><tr><td class="docs"><p>Links</p>
+</td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(def connection-actions [{:url &quot;/app/connection/add&quot; :text &quot;Add a connection&quot;}])
+(def user-actions [{:url &quot;/app/user/add&quot; :text &quot;Add a user&quot;}])</pre></tr><tr><td class="docs"><p>Partials</p>
+</td><td class="codes" /></tr><tr><td class="docs"><p>Force you to be logged in to use app/*</p>
+</td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(pre-route &quot;/app*&quot; {}
+      (resp/redirect &quot;/&quot;))</pre></tr><tr><td class="docs"><p>Connections pages - CRUD</p>
+</td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defpage &quot;/app/connection&quot; {}
+         &quot;Display all connections&quot;)</pre></tr><tr><td class="docs"><p>User pages - CRUD</p>
+</td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defpage &quot;/app/users&quot; {}
+         &quot;Display all users&quot;)</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#wareop.views.common" name="wareop.views.common"><h1 class="project-name">wareop.views.common</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(ns wareop.views.common
+  (use noir.core
+       hiccup.core
+       hiccup.page-helpers))</pre></tr><tr><td class="docs"><p>Links and includes</p>
+</td><td class="codes" /><pre class="brush: clojure">(def main-links [{:url &quot;/app/connection&quot; :text &quot;JDBC Connections&quot;}
+                 {:url &quot;/app/&quot; :text &quot;Application Home&quot;}
+                 {:url &quot;/app/users&quot; :text &quot;Users&quot;}
+                 {:url &quot;/app/logout&quot; :text &quot;Logout&quot;}])</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(def includes {:jquery (include-js &quot;http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&quot;)
+               :default (include-css &quot;/css/default.css&quot;)
+               :reset (include-css &quot;/css/reset.css&quot;)
+               :app.js (include-js &quot;/js/app.js&quot;)})</pre></tr><tr><td class="docs"><p>Helper partials</p>
+</td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defpartial build-head [incls]
+            [:head
+             [:title &quot;Wareop - Next best analytics and actions&quot;]
+             (map #(get includes %) incls)])</pre></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defpartial link-item [{:keys [url cls text]}]
+            [:li
+             (link-to {:class cls} url text)])</pre></tr><tr><td class="docs"><p>Layouts</p>
+</td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes" /><pre class="brush: clojure">(defpartial main-layout [&amp; content]
+            (html5
+              (build-head [:reset :default :jquery :app.js])
+              [:body
+               [:div#wrapper
+                [:div.content
+                 [:div#header
+                  [:h1 (link-to &quot;/app/&quot; &quot;Wareop&quot;)]
+                  [:ul.nav
+                   (map link-item main-links)]]
+                 content]]]))</pre></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_wareop.database.redis-datamapper">wareop.database.redis-datamapper</li><li class="floating-toc-li" id="floating-toc_wareop.database.redis-persistence">wareop.database.redis-persistence</li><li class="floating-toc-li" id="floating-toc_wareop.models.connections">wareop.models.connections</li><li class="floating-toc-li" id="floating-toc_wareop.models.users">wareop.models.users</li><li class="floating-toc-li" id="floating-toc_wareop.models">wareop.models</li><li class="floating-toc-li" id="floating-toc_wareop.server">wareop.server</li><li class="floating-toc-li" id="floating-toc_wareop.views.app">wareop.views.app</li><li class="floating-toc-li" id="floating-toc_wareop.views.common">wareop.views.common</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
        SyntaxHighlighter.all()</script></body></html>
