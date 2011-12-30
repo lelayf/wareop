@@ -1,6 +1,7 @@
 (ns wareop.models.connections
-  (:use wareop.settings)
-  (:use wareop.middleware.redis-datamapper))
+  (:use wareop.database.redis-datamapper))
+
+(defn init! [] (println "Initialized connections model"))
 
 ; ORACLE
 ; (def db { :classname    "oracle.jdbc.driver.OracleDriver"
@@ -10,6 +11,7 @@
 ;           :password     "DTM_PROD" })
 
 (def-redis-type connection (string-type :id :name :classname :subprotocol :port :sid :ip :user :pass :db :context) 
+                           (list-type :read-by :write-by :del-by)
                            (primary-key :id))
 
 

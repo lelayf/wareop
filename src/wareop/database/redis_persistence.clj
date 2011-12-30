@@ -1,4 +1,4 @@
-(ns wareop.middleware.redis-persistence
+(ns wareop.database.redis-persistence
   (:require [redis.core :as redis])
   (:use [cheshire.core :only [generate-string parse-string]]))
 

@@ -1,7 +1,7 @@
-(ns wareop.middleware.redis-datamapper
+(ns wareop.database.redis-datamapper
   (:require [redis.core :as redis])
   (:use [clojure.contrib.str-utils :as cstr])
-  (:use wareop.middleware.redis-persistence))
+  (:use wareop.database.redis-persistence))
 
 (defn primary-key-value [redis-obj]
   (let [pk-keys ((redis-obj :type) :primary-key)

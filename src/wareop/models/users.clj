@@ -1,13 +1,23 @@
-(ns wareop.models.connections
-    (:use wareop.settings)
+(ns wareop.models.users
+    (:require [redis.core :as redis])
     (:require [noir.util.crypt :as crypt])
-    (:use wareop.middleware.redis-datamapper))
+    (:use wareop.database.redis-datamapper))
 
+(defn init! [] (println "Initialized user model"))
 
 (def-redis-type user (string-type :email :pass)
+                     (list-type :read :write :del)
                      (primary-key :email))
 
-(defmacro rds [command-name args]
-  `(redis/with-server  {:host "127.0.0.1" :port 6379 :db 0} (redis/~command-name ~args)))
+
+;; Getters
+
+(defn user-get [email] (redis/with-server (def d (user :find :email email))))
+
+
+;; Mutations and Checkers
+
+
+;; Operations
 
 
