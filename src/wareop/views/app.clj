@@ -24,6 +24,9 @@
 (pre-route "/app*" {}
       (resp/redirect "/"))
 
+(defpage "/" []
+  (common/main-layout))
+
 ;; Connections pages - CRUD
 
 (defpage "/app/connection" {}

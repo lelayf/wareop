@@ -3,15 +3,23 @@
        hiccup.core
        hiccup.page-helpers))
 
+(defn include-less
+    "Include a list of external less stylesheet files."
+    [& styles]
+    (for [style styles]
+          [:link {:href style, :rel "stylesheet/less"}]))
+
 ;; Links and includes
-(def main-links [{:url "/app/connection" :text "JDBC Connections"}
+(def main-links [{:url "/app/connection" :text "Data Sources"}
                  {:url "/app/" :text "Application Home"}
                  {:url "/app/users" :text "Users"}
                  {:url "/app/logout" :text "Logout"}])
 
 (def includes {:jquery (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
-               :default (include-css "/css/default.css")
-               :reset (include-css "/css/reset.css")
+               ;:default (include-css "/css/default.css")
+               ;:reset (include-css "/css/reset.css")
+               :bootstrap (include-less "/lib/bootstrap.less")
+               :less (include-js "/js/less.js")
                :app.js (include-js "/js/app.js")})
 
 ;; Helper partials
@@ -29,13 +37,14 @@
 
 (defpartial main-layout [& content]
             (html5
-              (build-head [:reset :default :jquery :app.js])
+              (build-head [:bootstrap :less :jquery :app.js])
               [:body
-               [:div#wrapper
-                [:div.content
-                 [:div#header
-                  [:h1 (link-to "/app/" "Wareop")]
+               [:div.topbar
+                [:div.fill
+                 [:div.container
+                  [:a.brand {:href "#"} "Wareop"]
                   [:ul.nav
-                   (map link-item main-links)]]
-                 content]]]))
+                    (map link-item main-links)]]]]
+               content]))
+
 
