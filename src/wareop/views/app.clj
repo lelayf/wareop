@@ -31,7 +31,8 @@
 ;; Force you to be logged in to use app/*
 
 (pre-route "/app*" {}
-      (resp/redirect "/"))
+  (when-not (users/logged-in?)
+           (resp/redirect "/")))
 
 (defpage "/" {:as user}
     (if (users/logged-in?)

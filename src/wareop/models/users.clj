@@ -1,6 +1,7 @@
 (ns wareop.models.users
-    (:require [redis.core :as redis])
-    (:require [noir.util.crypt :as crypt]
+    (:use [wareop.database.conf])
+    (:require [redis.core :as redis]
+              [noir.util.crypt :as crypt]
               [noir.session :as session]
               [noir.validation :as vali]
               [wareop.database.redis-datamapper :as dm]))
@@ -11,13 +12,13 @@
                      (list-type :read :write :del)
                      (primary-key :username))
 
-
 ;; Getters
 
 (defn logged-in? []
     (session/get :logged-in))
 
-(defn user-get [username] (redis/with-server (user :find :username username)))
+(defn user-get [username] 
+            (redis/with-server redis-conf (user :find username)))
 
 ;; Mutations and Checkers
 
@@ -25,10 +26,13 @@
 ;; Operations
 
 (defn login! [{:keys [username password] :as user}]
-    (let [{stored-pass :password} (user-get username)]
+    (let [stored-pass ((user-get username) :get :password)]
           (if (and stored-pass (crypt/compare password stored-pass))
               (do
                   (session/put! :logged-in true)
                   (session/put! :username username))
-              (vali/set-error :username "Invalid username or password"))))
+              (do
+                (println stored-pass)
+                (println password)
+                (vali/set-error :username "Invalid username or password")))))
 

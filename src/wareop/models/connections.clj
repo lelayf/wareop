@@ -1,5 +1,6 @@
 (ns wareop.models.connections
-  (:use wareop.database.redis-datamapper))
+  (:use [wareop.database.conf]
+        [wareop.database.redis-datamapper]))
 
 (defn init! [] (println "Initialized connections model"))
 
