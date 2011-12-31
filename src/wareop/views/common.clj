@@ -33,6 +33,9 @@
             [:li
              (link-to {:class cls} url text)])
 
+(defpartial empty-row [n]
+            (for [i (range n)] [:div.row [:div.span16 "&nbsp;"]]))
+
 ;; Layouts
 
 (defpartial main-layout [& content]
@@ -42,9 +45,19 @@
                [:div.topbar
                 [:div.fill
                  [:div.container
-                  [:a.brand {:href "#"} "Wareop"]
+                  [:a.brand {:href "#"} "wareop"]
                   [:ul.nav
                     (map link-item main-links)]]]]
                content]))
 
+(defpartial home-layout [& content]
+              (html5
+                (build-head [:bootstrap :less :jquery :app.js])
+                [:body
+                  [:div.topbar
+                    [:div.fill
+                      [:div.container
+                        [:a.brand {:href "#"} "wareop"]]]]
+                        content]))
+                                  
 
