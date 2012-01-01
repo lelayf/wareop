@@ -20,13 +20,15 @@
 ;; Partials
 
 (defpartial error-text [errors]
-              [:p (string/join "<br/>" errors)])
+              [:div {:class "alert-message error" :style "text-align:left"}
+                [:a.close {:href "#"} "x"]
+                [:p (string/join "" errors)]])
 
 (defpartial user-fields [{:keys [username] :as usr}]
               (vali/on-error :username error-text)
-              (text-field {:placeholder "Username"} :username username)
+              [:div.input (text-field {:class "xlarge" :placeholder "Username"} :username username)]
               [:br]
-              (password-field {:placeholder "Password"} :password))
+              [:div.input (password-field {:class "xlarge" :placeholder "Password"} :password)])
 
 ;; Force you to be logged in to use app/*
 
@@ -54,15 +56,21 @@
           (resp/redirect "/app")
           (render "/" user)))
 
+;; Application home - let's use it to display a dashboard
+
+(defpage "/app" []
+  (common/main-layout))
 
 ;; Connections pages - CRUD
 
 (defpage "/app/connection" {}
-         "Display all connections")
+    (common/main-layout 
+      "Display all connections"))
 
 
 ;; User pages - CRUD
 
 (defpage "/app/users" {}
-         "Display all users")
+    (common/main-layout     
+        "Display all users"))
 

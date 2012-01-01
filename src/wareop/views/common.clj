@@ -11,7 +11,7 @@
 
 ;; Links and includes
 (def main-links [{:url "/app/connection" :text "Data Sources"}
-                 {:url "/app/" :text "Application Home"}
+                 {:url "/app" :text "Application Home"}
                  {:url "/app/users" :text "Users"}
                  {:url "/app/logout" :text "Logout"}])
 
