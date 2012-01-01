@@ -10,8 +10,12 @@
           [:link {:href style, :rel "stylesheet/less"}]))
 
 ;; Links and includes
-(def main-links [{:url "/app/connection" :text "Data Sources"}
-                 {:url "/app" :text "Application Home"}
+(def main-links [{:url "/app/datasources" :text "Data Sources"}
+                 {:url "/app/mappings" :text "Business Mappings"}
+                 {:url "/app/reports" :text "Reporting"}
+                 {:url "/app/emailing" :text "Email Marketing"}
+                 {:url "/app/adserve" :text "Ad Serving"}
+                 {:url "/app/weba" :text "Web Analytics"}
                  {:url "/app/users" :text "Users"}
                  {:url "/app/logout" :text "Logout"}])
 
@@ -41,15 +45,30 @@
 
 (defpartial main-layout [& content]
             (html5
-              (build-head [:bootstrap :less :jquery :app.js])
+              (build-head [:bootstrap :less :jquery])
               [:body
                [:div.topbar
                 [:div.fill
                  [:div.container
-                  [:a.brand {:href "#"} "wareop"]
+                  [:a.brand {:href "/app"} "wareop"]
                   [:ul.nav
                     (map link-item main-links)]]]]
                content]))
+
+(defpartial app-layout [& content]
+              (html5
+                (build-head [:bootstrap :less :jquery])
+                [:body
+                  [:div.topbar
+                    [:div.fill
+                      [:div.container
+                        [:a.brand {:href "/app"} "wareop"]
+                        [:ul.nav
+                          (map link-item main-links)]]]]
+                 [:div.container-fluid
+                  [:div.sidebar]
+                  [:div.content
+                     content]]]))                                                                       
 
 (defpartial home-layout [& content]
               (html5
