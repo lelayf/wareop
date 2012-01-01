@@ -65,7 +65,8 @@
 
 (defpage "/app/datasources" []
     (common/app-layout
-      "ETL app"))
+      [:div.row 
+       [:div.span4 "ETL app"]]))
 
 ;; User pages - CRUD
 

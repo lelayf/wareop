@@ -16,10 +16,10 @@
                  {:url "/app/emailing" :text "Email Marketing"}
                  {:url "/app/adserve" :text "Ad Serving"}
                  {:url "/app/weba" :text "Web Analytics"}
-                 {:url "/app/users" :text "Users"}
-                 {:url "/app/logout" :text "Logout"}])
+                 {:url "/app/users" :text "Users"}])
 
-(def includes {:jquery (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
+(def includes {
+               ;:jquery (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
                ;:default (include-css "/css/default.css")
                ;:reset (include-css "/css/reset.css")
                :bootstrap (include-less "/lib/bootstrap.less")
@@ -45,39 +45,61 @@
 
 (defpartial main-layout [& content]
             (html5
-              (build-head [:bootstrap :less :jquery])
+              (build-head [:bootstrap :less])
               [:body
                [:div.topbar
-                [:div.fill
+                [:div.fill {:style "height:46px;padding-top:6px"}
                  [:div.container
                   [:a.brand {:href "/app"} "wareop"]
                   [:ul.nav
-                    (map link-item main-links)]]]]
+                    (map link-item main-links)]
+                  [:p.pull-right]
+                  [:a {:href "/app/logout" :class "btn small danger"} "Logout"]
+                  [:p]]]]
                content]))
 
 (defpartial app-layout [& content]
               (html5
-                (build-head [:bootstrap :less :jquery])
+                (build-head [:bootstrap :less])
                 [:body
                   [:div.topbar
-                    [:div.fill
+                    [:div.fill {:style "height:46px;padding-top:6px"}
                       [:div.container
                         [:a.brand {:href "/app"} "wareop"]
                         [:ul.nav
-                          (map link-item main-links)]]]]
-                 [:div.container-fluid
-                  [:div.sidebar]
+                          (map link-item main-links)]
+                        [:p.pull-right]
+                        [:a {:href "/app/logout" :class "btn small danger"} "Logout"]
+                        [:p]]]]
+                 [:div.container
+                 [:div.container-fluid {:style "margin-top:60px"}
+                  [:div.sidebar  "foo"]
                   [:div.content
-                     content]]]))                                                                       
+                     content]]]]))                                                                       
 
 (defpartial home-layout [& content]
               (html5
-                (build-head [:bootstrap :less :jquery :bootstrap-alerts])
+                (build-head [:bootstrap :less :bootstrap-alerts])
                 [:body
                   [:div.topbar
-                    [:div.fill
+                    [:div.fill {:style "height:46px;padding-top:6px"}
                       [:div.container
                         [:a.brand {:href "#"} "wareop"]]]]
                         content]))
                                   
+
+(defpartial t-layout [& content]
+            (html5
+                (build-head [:bootstrap :less])
+                [:body
+                  [:div.container-fluid
+                   [:div.sidebar "foo"]
+                   [:div.content content]
+                   ]]))                                                                                                                   
+
+
+(defpage "/foo" []
+    (t-layout
+      "yeah"))
+
 
