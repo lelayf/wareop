@@ -20,7 +20,7 @@
 ;; Partials
 
 (defpartial error-text [errors]
-              [:div {:class "alert-message error" :style "text-align:left"}
+              [:div {:class "alert-message error in fade" :data-alert "alert" :style "text-align:left"}
                 [:a.close {:href "#"} "x"]
                 [:p (string/join "" errors)]])
 
@@ -55,6 +55,10 @@
       (if (users/login! user)
           (resp/redirect "/app")
           (render "/" user)))
+
+(defpage "/app/logout" {}
+           (session/clear!)
+           (resp/redirect "/"))
 
 ;; Application home - let's use it to display a dashboard
 

@@ -20,7 +20,8 @@
                ;:reset (include-css "/css/reset.css")
                :bootstrap (include-less "/lib/bootstrap.less")
                :less (include-js "/js/less.js")
-               :app.js (include-js "/js/app.js")})
+               :bootstrap-alerts (include-js "/js/bootstrap-alerts.js")})
+               ;:app.js (include-js "/js/app.js")})
 
 ;; Helper partials
 
@@ -52,7 +53,7 @@
 
 (defpartial home-layout [& content]
               (html5
-                (build-head [:bootstrap :less :jquery :app.js])
+                (build-head [:bootstrap :less :jquery :bootstrap-alerts])
                 [:body
                   [:div.topbar
                     [:div.fill

@@ -32,7 +32,5 @@
                   (session/put! :logged-in true)
                   (session/put! :username username))
               (do
-                (println stored-pass)
-                (println password)
                 (vali/set-error :username "Invalid username or password")))))
 
