@@ -102,7 +102,7 @@
                 (build-head [:bootstrap :less :jquery :bootstrap-alerts])
                 [:body
                   [:div.topbar
-                    [:div.fill {:style "height:46px;padding-top:6px"}
+                    [:div.topbar-inner ;{:style "height:46px;padding-top:6px"}
                       [:div.container
                         [:a.brand {:href "#"} "wareop"]]]]
                         content]))
