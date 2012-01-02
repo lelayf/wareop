@@ -33,9 +33,35 @@
 
 ;; page - CRUD
 
+;(defpartial sidebar  
+
+; TODO : use map to manage this
+(defpartial sidebar []
+    [:h5 "Connections"]
+      [:ul
+       [:li "JDBC"]
+       [:li "Flat files"]
+       [:li "S3" ]
+       [:li "HDFS"]]
+    [:h5 "Profiling"]
+      [:ul
+       [:li "Jobs"]
+       [:li "Stats"]
+       [:li "Alerts"]
+       [:li "Lineage"]])
+
+
+(defpartial content []
+              [:div.hero-unit
+                [:h1 "Hello world"]
+                [:p "Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit"]]
+              [:div.row
+                 [:div.span16 "ETL App Yeah"]])
+
+
 (defpage "/app/datasources" []
-    (common/app-layout
-      [:div.row 
-       [:div.span4 "ETL app yeah"]]))
+    (common/app-layout2 
+      (sidebar)
+      (content)))
 
 

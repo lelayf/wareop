@@ -25,7 +25,7 @@
                :bootstrap (include-less "/lib/bootstrap.less")
                :less (include-js "/js/less.js")
                :bootstrap-alerts (include-js "/js/bootstrap-alerts.js")
-               :d3 (include-js "https://github.com/mbostock/d3/blob/v2.7.1/d3.js")
+               :d3 (include-js "/js/d3.min.js")
                :common (include-css "/css/common.css")})
                ;:app.js (include-js "/js/app.js")})
 
@@ -92,6 +92,26 @@
                     [:p "Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit"]]
                    [:div.row
                     [:div.span16 content]]]]]))
+
+(defpartial app-layout2 [sidebar & content]
+            (html5
+              (build-head [:bootstrap :less :common])
+              [:body
+               [:div.topbar
+                [:div.topbar-inner
+                 [:div.container-fluid
+                  [:a.brand {:href "/app"} "wareop"]
+                  [:ul.nav
+                   (map link-item main-links)]
+                  [:p.pull-right
+                  [:a {:href "/app/logout" :class "btn small danger"} "Logout"]]
+                  ]]]
+               [:div.container-fluid
+                [:div.sidebar
+                 [:div.well
+                  sidebar]]
+                [:div.content
+                  content]]]))
 
 
 ; Used by login page 

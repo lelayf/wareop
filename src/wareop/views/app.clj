@@ -21,5 +21,5 @@
 
 (defpage "/app" []
   (common/main-layout
-    [:iframe {:style "width:100%;height:800px" :src "http://www.forbes.com/sites/afontevecchia/2011/12/30/facebook-vs-google-the-battle-for-internet-dominance/"}]))
+    "Cross app summary dashboards"))
 
