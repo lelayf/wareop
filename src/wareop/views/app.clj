@@ -59,7 +59,8 @@
 ;; Application home - let's use it to display a dashboard
 
 (defpage "/app" []
-  (common/main-layout))
+  (common/main-layout
+    "foobar"))
 
 ;; Connections pages - CRUD
 
