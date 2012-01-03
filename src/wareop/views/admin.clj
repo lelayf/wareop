@@ -1,4 +1,4 @@
-(ns wareop.views.users
+(ns wareop.views.admin
   (:use noir.core
         hiccup.core
         hiccup.page-helpers
@@ -32,7 +32,8 @@
 
 ;; User pages - CRUD
 
-(defpage "/app/users" {}
+(defpage "/app/admin" {}
     (common/app-layout     
-        "Display all users"))
+      "Admin stuff"  
+      "Display all users"))
 

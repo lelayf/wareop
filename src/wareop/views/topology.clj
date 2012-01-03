@@ -1,4 +1,4 @@
-(ns wareop.views.datasources
+(ns wareop.views.topology
   (:use noir.core
         hiccup.core
         hiccup.page-helpers
@@ -13,7 +13,12 @@
 
 ;; Links
 
-;(def connection-actions [{:url "/app/datasources/connection/add" :text "Add a connection"}])
+(def sidebar-locations {:prefix "/app/topology/locations"
+                        :links [{:url "jdbc" :text "JDBC"}
+                                {:url "files" :text "Files"}
+                                {:url "s3" :text "Amazon S3"}
+                                {:url "hdfs" :text "Hadoop FS"}]})
+
 ;(def user-actions [{:url "/app/users/add" :text "Add a user"}])
 
 
@@ -37,12 +42,9 @@
 
 ; TODO : use map to manage this
 (defpartial sidebar []
-    [:h5 "Connections"]
+    [:h5 "Locations"]
       [:ul
-       [:li "JDBC"]
-       [:li "Flat files"]
-       [:li "S3" ]
-       [:li "HDFS"]]
+        (common/link-items sidebar-locations)]
     [:h5 "Profiling"]
       [:ul
        [:li "Jobs"]
@@ -59,8 +61,8 @@
                  [:div.span16 "ETL App Yeah"]])
 
 
-(defpage "/app/datasources" []
-    (common/app-layout2 
+(defpage "/app/topology" []
+    (common/app-layout 
       (sidebar)
       (content)))
 

@@ -1,4 +1,4 @@
-(ns wareop.views.weba
+(ns wareop.views.analytics
   (:use noir.core
         hiccup.core
         hiccup.page-helpers
@@ -30,10 +30,11 @@
               [:br]
               [:div.row [:div {:class "span6 offset3"} [:div.input (password-field {:class "xlarge" :placeholder "Password"} :password)]]])
 
-;; Web Analytics
+;; Reports
 
-(defpage "/app/weba" {}
-      (common/app-layout
-          "Web analytics app"))
+(defpage "/app/analytics" {}
+    (common/app-layout
+      "hohoho"  
+      "Reporting app based on D3 (and Pinot?)"))
 
 

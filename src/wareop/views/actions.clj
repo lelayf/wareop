@@ -1,4 +1,4 @@
-(ns wareop.views.reports
+(ns wareop.views.actions
   (:use noir.core
         hiccup.core
         hiccup.page-helpers
@@ -30,10 +30,10 @@
               [:br]
               [:div.row [:div {:class "span6 offset3"} [:div.input (password-field {:class "xlarge" :placeholder "Password"} :password)]]])
 
-;; Reports
+;; Emailing 
 
-(defpage "/app/reports" {}
-    (common/app-layout
-        "Reporting app based on D3 (and Pinot?)"))
-
+(defpage "/app/actions" {}
+      (common/app-layout
+          "side story"
+          "Rule-based emailing, texting, ad serving, ..."))
 
