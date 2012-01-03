@@ -15,4 +15,5 @@
                            (list-type :read-by :write-by :del-by)
                            (primary-key :id))
 
+(defn create! [] (println ""))
 

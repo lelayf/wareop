@@ -12,6 +12,11 @@
             [wareop.views.common :as common]
             [wareop.views.topology.main :as topo-main]))
 
+;; IDEA
+;; use this to build paths based on namespace :
+;; (clojure.string/join "/" (vec (concat ["/app"] (pop (clojure.string/split (str (ns-name *ns*)) #"\.")))))
+
+
 ;; Links
 (def bc [{:url "/app" :text "Home"}
          {:url "/app/topology" :text "Topology"}
@@ -29,17 +34,29 @@
               [:ul
                (common/link-items sidebar-jdbc)])
 
-(defpartial content []
-            [:h3 "Create new JDBC connection"]
-            [:form
-             ])
-
+(defpartial connection-fields [{:keys [id name classname subprotocol port sid ip user pass db context]}]
+             [:div.clearfix (label "driverSelect" "Select a JDBC Driver")
+              [:div.input (drop-down "driverSelect"
+                                     ["MySQL" "PostgreSQL" "Oracle"])]]
+             [:div.clearfix (label "ipAddress" "IP address or host")
+              [:div.input (text-field "ipAddress" ip)]])
 
 ;; Locations - CRUD
 
-(defpage "/app/topology/locations/jdbc/create" []
+(defpage "/app/topology/locations/jdbc/create" {:as conn}
     (common/app-layout bc 
       (sidebar)
-      (content)))
+      [:h3 "Create new JDBC connection"]
+      [:div.row                 
+        [:div.span12                 
+          (form-to [:post "/app/topology/locations/jdbc/create"]
+              [:fieldset
+                (connection-fields conn)
+                [:div.actions (submit-button {:class "btn primary submit"} "Create")]])]]))
+
+(defpage [:post "/app/topology/locations/jdbc/create"] {:as conn}
+      (if (connections/create! conn)
+        (resp/redirect "/app/topology/locations/jdbc")
+        (render "/app/topology/locations/jdbc/create" conn)))
 
 
