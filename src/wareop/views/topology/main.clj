@@ -1,4 +1,4 @@
-(ns wareop.views.topology
+(ns wareop.views.topology.main
   (:use noir.core
         hiccup.core
         hiccup.page-helpers
@@ -19,39 +19,22 @@
                                 {:url "s3" :text "Amazon S3"}
                                 {:url "hdfs" :text "Hadoop FS"}]})
 
-;(def user-actions [{:url "/app/users/add" :text "Add a user"}])
+(def sidebar-profiling {:prefix "/app/topology/profiling"
+                        :links [{:url "stats" :text "Stats"}
+                                {:url "alerts" :text "Alerts"}]})
 
+(def bc [{:url "/app" :text "Home"}
+         {:url "/app/topology" :text "Topology"}])
 
 ;; Partials
 
-(defpartial error-text [errors]
-              [:div.row [:div {:class "span8 offset4"} [:div {:class "alert-message error in fade" :data-alert "alert"}; :style "text-align:left"}
-                [:a.close {:href "#"} "x"]
-                [:p (string/join "" errors)]]]])
-
-(defpartial user-fields [{:keys [username] :as usr}]
-              (vali/on-error :username error-text)
-              [:div.row [:div {:class "span6 offset3"} [:div.input (text-field {:class "xlarge" :placeholder "Username"} :username username)]]]
-              [:br]
-              [:div.row [:div {:class "span6 offset3"} [:div.input (password-field {:class "xlarge" :placeholder "Password"} :password)]]])
-
-
-;; page - CRUD
-
-;(defpartial sidebar  
-
-; TODO : use map to manage this
 (defpartial sidebar []
     [:h5 "Locations"]
       [:ul
         (common/link-items sidebar-locations)]
     [:h5 "Profiling"]
       [:ul
-       [:li "Jobs"]
-       [:li "Stats"]
-       [:li "Alerts"]
-       [:li "Lineage"]])
-
+        (common/link-items sidebar-profiling)])
 
 (defpartial content []
               [:div.hero-unit
@@ -60,9 +43,10 @@
               [:div.row
                  [:div.span16 "ETL App Yeah"]])
 
+;; page - CRUD
 
 (defpage "/app/topology" []
-    (common/app-layout 
+    (common/app-layout bc
       (sidebar)
       (content)))
 

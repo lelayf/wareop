@@ -10,7 +10,8 @@
           [:link {:href style, :rel "stylesheet/less"}]))
 
 ;; Links and includes
-(def main-links {:prefix "/app"
+
+(def topbar-links {:prefix "/app"
                   :links [{:url "topology" :text "Topology"}
                           {:url "analytics" :text "Analytics"}
                           {:url "actions" :text "Actions"}
@@ -37,12 +38,21 @@
             [:li
              (link-to {:class cls} url text)])
 
+(defpartial link-item-breadcrumb [{:keys [url cls text]}]
+             (if (not (= "active" cls))
+                [:li (link-to {:class cls} url text) [:span.divider "/"]]
+                [:li.active text]))
+
 ; Processes the evolved version of links hashmaps which hold prefix separately to avoid redundancy
 (defpartial link-items [{:keys [prefix links]}]
             (map (fn [{:keys [url cls text]}] [:li (link-to {:class cls} (str prefix "/" url) text)]) links))
 
 (defpartial empty-row [n]
             (for [i (range n)] [:div.row [:div.span16 "&nbsp;"]]))
+
+(defpartial breadcrumbs [links]
+            [:ul.breadcrumb
+             (map link-item-breadcrumb links)])
 
 ;; Layouts
 
@@ -58,7 +68,7 @@
                  [:div.container-fluid
                   [:a.brand {:href "/app"} "wareop"]
                   [:ul.nav
-                    (link-items main-links)]
+                    (link-items topbar-links)]
                   [:p.pull-right
                     [:a {:href "/app/logout" :class "btn small danger"} "Logout"]]
                   ]]]
@@ -67,7 +77,7 @@
 ; Used by all app modules
 ; sidebar + content
 
-(defpartial app-layout [sidebar & content]
+(defpartial app-layout [bc sidebar & content]
             (html5
               (build-head [:bootstrap :less :common])
               [:body
@@ -76,7 +86,7 @@
                  [:div.container-fluid
                   [:a.brand {:href "/app"} "wareop"]
                   [:ul.nav
-                   (link-items main-links)]
+                   (link-items topbar-links)]
                   [:p.pull-right
                   [:a {:href "/app/logout" :class "btn small danger"} "Logout"]]
                   ]]]
@@ -85,6 +95,7 @@
                  [:div.well
                   sidebar]]
                 [:div.content
+                 (breadcrumbs bc) 
                   content]]]))
 
 
