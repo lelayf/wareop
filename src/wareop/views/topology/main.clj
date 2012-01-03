@@ -24,7 +24,7 @@
                                 {:url "alerts" :text "Alerts"}]})
 
 (def bc [{:url "/app" :text "Home"}
-         {:url "/app/topology" :text "Topology"}])
+         {:url "/app/topology" :text "Topology" :cls "active"}])
 
 ;; Partials
 
