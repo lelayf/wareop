@@ -23,6 +23,7 @@
                :bootstrap (include-less "/lib/bootstrap.less")
                :less (include-js "/js/less.js")
                :bootstrap-alerts (include-js "/js/bootstrap-alerts.js")
+               :bootstrap-tabs (include-js "/js/bootstrap-tabs.js")
                :d3 (include-js "/js/d3.min.js")
                :common (include-css "/css/common.css")})
 
@@ -79,7 +80,7 @@
 
 (defpartial app-layout [bc sidebar & content]
             (html5
-              (build-head [:bootstrap :less :common])
+              (build-head [:bootstrap :less :common :bootstrap-tabs])
               [:body
                [:div.topbar
                 [:div.topbar-inner

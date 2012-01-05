@@ -47,12 +47,18 @@
     (common/app-layout bc 
       (sidebar)
       [:h3 "Create new JDBC connection"]
-      [:div.row                 
-        [:div.span12                 
-          (form-to [:post "/app/topology/locations/jdbc/create"]
-              [:fieldset
-                (connection-fields conn)
-                [:div.actions (submit-button {:class "btn primary submit"} "Create")]])]]))
+      [:ul.tabs {:data-tabs "tabs" }
+        [:li {:class ""} (link-to "#oracle" "Oracle")]
+        [:li {:class ""} (link-to "#mysql" "MySQL")]]
+      [:div.tab-content {:id "my-tab-content"}                 
+        [:div {:id "oracle" :class "tab-pane active"}
+          [:div.span12                 
+            (form-to [:post "/app/topology/locations/jdbc/create"]
+                [:fieldset
+                  (connection-fields conn)
+                  [:div.actions (submit-button {:class "btn primary submit"} "Create")]])]]
+       [:div {:id "mysql" :class "tab-pane"} "MySQL"]
+       ]))
 
 (defpage [:post "/app/topology/locations/jdbc/create"] {:as conn}
       (if (connections/create! conn)
