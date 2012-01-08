@@ -19,7 +19,7 @@
 
 
 (def includes {
-               :jquery (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
+               :jquery (include-js "/js/jquery.min.js")
                :bootstrap (include-less "/lib/bootstrap.less")
                :less (include-js "/js/less.js")
                :bootstrap-alerts (include-js "/js/bootstrap-alerts.js")
@@ -80,7 +80,7 @@
 
 (defpartial app-layout [bc sidebar & content]
             (html5
-              (build-head [:bootstrap :less :common :bootstrap-tabs])
+              (build-head [:bootstrap :less :jquery :bootstrap-tabs :common])
               [:body
                [:div.topbar
                 [:div.topbar-inner
