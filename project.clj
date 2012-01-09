@@ -6,6 +6,7 @@
                  [noir "1.2.2"]
                  [org.clojars.tavisrudd/redis-clojure "1.3.1-SNAPSHOT"] 
                  [cheshire "2.0.2"]]
-  :dev-dependencies [[lein-marginalia "0.6.0"]]
+  :dev-dependencies [[lein-marginalia "0.6.0"]
+                     [codox "0.3.3"]]
   :main wareop.server)
 
